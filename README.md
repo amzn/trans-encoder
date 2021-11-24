@@ -1,7 +1,6 @@
 # Trans-Encoder: Unsupervised sentence-pair modelling through self- and mutual-distillations
 
-Code repo for paper [**Trans-Encoder: Unsupervised sentence-pair modelling through self- and mutual-distillations
-**](https://arxiv.org/pdf/2109.13059.pdf).
+Code repo for paper *[Trans-Encoder: Unsupervised sentence-pair modelling through self- and mutual-distillations](https://arxiv.org/pdf/2109.13059.pdf)*.
 
 ## Dependencies
 
@@ -47,6 +46,10 @@ Train with your custom corpus:
 ```bash
 >> python src/eval.py
 ```
+
+## Authors
+
+- **Fangyu Liu**: Main contributor
 
 ## Security
 
