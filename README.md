@@ -41,11 +41,14 @@ Trans-Encoder is a state-of-the-art unsupervised sentence similarity model. It c
 ## Dependencies
 
 ```
-torch=1.8.1
-transformers=4.9.0
-sentence-transformers=2.0.0
+torch==1.8.1
+transformers==4.9.0
+sentence-transformers==2.0.0
 ```
 Please view `requirements.txt` for more details.
+
+## Data
+All training and evaluation data will be automatically downloaded when running the scripts. See `data.py` for details.
 
 ## Train
 
@@ -80,14 +83,14 @@ Train with your custom corpus:
 ## Evaluate
 Bi-encoder:
 ```bash
->>python src/eval.py \
+>> python src/eval.py \
 --model_name_or_path "cambridgeltl/trans-encoder-bi-simcse-roberta-large"  \
 --mode bi \
 --task sts_sickr
 ```
 Cross-encoder:
 ```bash
->>python src/eval.py \
+>> python src/eval.py \
 --model_name_or_path "cambridgeltl/trans-encoder-cross-simcse-roberta-large"  \
 --mode cross \
 --task sts_sickr
