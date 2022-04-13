@@ -47,7 +47,7 @@ sentence-transformers==2.0.0
 Please view [requirements.txt](https://github.com/amzn/trans-encoder/blob/main/requirements.txt) for more details.
 
 ## Data
-All training and evaluation data will be automatically downloaded when running the scripts. See `data.py` for details.
+All training and evaluation data will be automatically downloaded when running the scripts. See [src/data.py](https://github.com/amzn/trans-encoder/blob/main/src/data.py) for details.
 
 ## Train
 
