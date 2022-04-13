@@ -81,10 +81,10 @@ for key in all_test:
 
 if not args.use_large:
     model_name1 = "princeton-nlp/unsup-simcse-bert-base-uncased"
-    model_name2 = "princeton-nlp/unsup-simcse-roberta-base" #'bert-base-uncased'
+    model_name2 = "princeton-nlp/unsup-simcse-roberta-base" 
 else:
     model_name1 = "princeton-nlp/unsup-simcse-bert-large-uncased"
-    model_name2 = "princeton-nlp/unsup-simcse-roberta-large" #'bert-base-uncased'
+    model_name2 = "princeton-nlp/unsup-simcse-roberta-large"
 
 
 simcse2base = {
