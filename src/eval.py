@@ -95,12 +95,12 @@ def main():
     parser.add_argument("--model_name_or_path", type=str, 
             default="princeton-nlp/unsup-simcse-bert-base-uncased",
             help="Transformers' model name or path")
-    parser.add_argument("--task", type=str, default='sts')
-    parser.add_argument("--mode", type=str, default='bi', help="cross|bi")
+    parser.add_argument("--task", type=str, default="sts", 
+            help='{sts|sickr|sts_sickr|qqp|qnli|mrpc|snli|custom}')
+    parser.add_argument("--mode", type=str, default='bi', help="{cross|bi}")
     parser.add_argument("--device", type=int, default=0)
-    parser.add_argument("--bi_encoder_pooling_mode", type=str,
-            default='cls', help="cls|mean")
-
+    parser.add_argument("--bi_encoder_pooling_mode", type=str, default='cls', 
+            help="{cls|mean}")
     parser.add_argument("--ensemble", action="store_true")
     parser.add_argument("--model_name_or_path1", type=str, 
             default="princeton-nlp/unsup-simcse-bert-base-uncased")
