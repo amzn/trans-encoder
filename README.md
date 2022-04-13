@@ -44,7 +44,7 @@ torch==1.8.1
 transformers==4.9.0
 sentence-transformers==2.0.0
 ```
-Please view `requirements.txt` for more details.
+Please view [requirements.txt](https://github.com/amzn/trans-encoder/blob/main/requirements.txt) for more details.
 
 ## Data
 All training and evaluation data will be automatically downloaded when running the scripts. See `data.py` for details.
@@ -57,12 +57,13 @@ Self-distillation:
 ```
 `0` denotes GPU device index.
 
-Mutual-distillation (two GPUs needed):
+Mutual-distillation (two GPUs needed; by default using SimCSE-BERT and RoBERTa for ensembling):
 ```bash
 >> bash train_mutual_distill.sh 0,1
 ```
 
-Availible `--task` options: `sts` (STS2012-2016 and STS-b), `sickr`, `sts_sickr` (STS2012-2016, STS-b, and SICK-R), `qqp`, `qnli`, `mrpc`, `snli`, `custom`.
+`--task` options: `sts` (STS2012-2016 and STS-b), `sickr`, `sts_sickr` (STS2012-2016, STS-b, and SICK-R), `qqp`, `qnli`, `mrpc`, `snli`, `custom`. See [src/data.py](https://github.com/amzn/trans-encoder/blob/main/src/data.py) for task data details.
+`--use_large` (`store_true`): availible in [src/train_mutual_distill.py](https://github.com/amzn/trans-encoder/blob/main/src/mutual_distill_parallel.py), switch to large models instead of base models.
 
 Train with your custom corpus:
 ```bash
