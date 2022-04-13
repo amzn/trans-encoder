@@ -1,12 +1,11 @@
-# Trans-Encoder: Unsupervised sentence-pair modelling through self- and mutual-distillations
+# Trans-Encoder
 
-<img align="right" width="600"  src="https://production-media.paperswithcode.com/methods/e6c08315-2b70-4125-aeb2-147a6785d9b1.png">
+<img align="right" width="500"  src="https://production-media.paperswithcode.com/methods/e6c08315-2b70-4125-aeb2-147a6785d9b1.png">
 
-Code repo for paper **_[Trans-Encoder: Unsupervised sentence-pair modelling through self- and mutual-distillations](https://arxiv.org/pdf/2109.13059.pdf)_** <br>
+Code repo for **ICLR 2022** paper **_[Trans-Encoder: Unsupervised sentence-pair modelling through self- and mutual-distillations](https://arxiv.org/abs/2109.13059)_** <br>
 by [Fangyu Liu](http://fangyuliu.me/about.html), [Yunlong Jiao](https://yunlongjiao.github.io/), [Jordan Massiah](https://www.linkedin.com/in/jordan-massiah-562862136/?originalSubdomain=uk), [Emine Yilmaz](https://sites.google.com/site/emineyilmaz/), [Serhii Havrylov](https://serhii-havrylov.github.io/).
 
 Trans-Encoder is a state-of-the-art unsupervised sentence similarity model. It conducts self-knowledge distillation on top of pretrained language models by alternating between their bi- and cross-encoder forms.
-
 
 
 ## Huggingface pretrained models for STS
@@ -45,25 +44,28 @@ torch==1.8.1
 transformers==4.9.0
 sentence-transformers==2.0.0
 ```
-Please view `requirements.txt` for more details.
+Please view [requirements.txt](https://github.com/amzn/trans-encoder/blob/main/requirements.txt) for more details.
 
 ## Data
-All training and evaluation data will be automatically downloaded when running the scripts. See `data.py` for details.
+All training and evaluation data will be automatically downloaded when running the scripts. See [src/data.py](https://github.com/amzn/trans-encoder/blob/main/src/data.py) for details.
 
 ## Train
 
-Self-distillation:
+`--task` options: `sts` (STS2012-2016 and STS-b), `sickr`, `sts_sickr` (STS2012-2016, STS-b, and SICK-R), `qqp`, `qnli`, `mrpc`, `snli`, `custom`. See [src/data.py](https://github.com/amzn/trans-encoder/blob/main/src/data.py) for task data details. By default using all STS data (`sts_sickr`).
+
+#### Self-distillation
 ```bash
 >> bash train_self_distill.sh 0
 ```
 `0` denotes GPU device index.
 
-Mutual-distillation (two GPUs needed):
+#### Mutual-distillation
 ```bash
->> bash train_mutual_distill.sh 1,2
+>> bash train_mutual_distill.sh 0,1
 ```
+Two GPUs needed; by default using SimCSE BERT & RoBERTa base models for ensembling. Add `--use_large` for switching to large models.
 
-Train with your custom corpus:
+#### Train with your custom corpus
 ```bash
 >> CUDA_VISIBLE_DEVICES=0,1 python src/mutual_distill_parallel.py \
          --batch_size_bi_encoder 128 \
@@ -81,6 +83,8 @@ Train with your custom corpus:
 `CORPUS_PATH` should point to your custom corpus in which every line should be a sentence pair in the form of `sent1||sent2`.
 
 ## Evaluate
+#### Evaluate a single model
+
 Bi-encoder:
 ```bash
 >> python src/eval.py \
@@ -93,6 +97,27 @@ Cross-encoder:
 >> python src/eval.py \
 --model_name_or_path "cambridgeltl/trans-encoder-cross-simcse-roberta-large"  \
 --mode cross \
+--task sts_sickr
+```
+#### Evaluate ensemble
+
+Bi-encoder:
+```bash
+>> python src/eval.py \
+--model_name_or_path1 "cambridgeltl/trans-encoder-bi-simcse-bert-large"  \
+--model_name_or_path2 "cambridgeltl/trans-encoder-bi-simcse-roberta-large"  \
+--mode bi \
+--ensemble \
+--task sts_sickr
+```
+
+Cross-encoder:
+```bash
+>> python src/eval.py \
+--model_name_or_path1 "cambridgeltl/trans-encoder-cross-simcse-bert-large"  \
+--model_name_or_path2 "cambridgeltl/trans-encoder-cross-simcse-roberta-large"  \
+--mode cross \
+--ensemble \
 --task sts_sickr
 ```
 

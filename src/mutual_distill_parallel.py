@@ -36,7 +36,8 @@ from sentence_transformers_ext.cross_encoder_eval import (
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument("--task", type=str, default='sts')
+parser.add_argument("--task", type=str, default='sts',
+        help='{sts|sickr|sts_sickr|qqp|qnli|mrpc|snli|custom}')
 parser.add_argument("--device1", type=int, default=0)
 parser.add_argument("--device2", type=int, default=0)
 parser.add_argument("--cycle", type=int, default=3)
@@ -47,9 +48,9 @@ parser.add_argument("--batch_size_bi_encoder", type=int, default=128)
 parser.add_argument("--init_with_new_models", action="store_true")
 parser.add_argument("--use_large", action="store_true")
 parser.add_argument("--bi_encoder1_pooling_mode", type=str,
-        default='cls', help="cls|mean")
+        default='cls', help="{cls|mean}")
 parser.add_argument("--bi_encoder2_pooling_mode", type=str,
-        default='cls', help="cls|mean")
+        default='cls', help="{cls|mean}")
 parser.add_argument("--random_seed", type=int, default=2021)
 parser.add_argument("--custom_corpus_path", type=str, default=None)
 parser.add_argument("--quick_test", action="store_true")
@@ -80,10 +81,10 @@ for key in all_test:
 
 if not args.use_large:
     model_name1 = "princeton-nlp/unsup-simcse-bert-base-uncased"
-    model_name2 = "princeton-nlp/unsup-simcse-roberta-base" #'bert-base-uncased'
+    model_name2 = "princeton-nlp/unsup-simcse-roberta-base" 
 else:
     model_name1 = "princeton-nlp/unsup-simcse-bert-large-uncased"
-    model_name2 = "princeton-nlp/unsup-simcse-roberta-large" #'bert-base-uncased'
+    model_name2 = "princeton-nlp/unsup-simcse-roberta-large"
 
 
 simcse2base = {

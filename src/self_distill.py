@@ -39,11 +39,12 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--model_name_or_path", type=str, 
         default="princeton-nlp/unsup-simcse-bert-base-uncased",
         help="Transformers' model name or path")
-parser.add_argument("--task", type=str, default='sts')
+parser.add_argument("--task", type=str, default='sts', 
+        help='{sts|sickr|sts_sickr|qqp|qnli|mrpc|snli|custom}')
 parser.add_argument("--device", type=int, default=0)
 parser.add_argument("--cycle", type=int, default=3)
-parser.add_argument("--bi_encoder_pooling_mode", type=str,
-        default='cls', help="cls|mean")
+parser.add_argument("--bi_encoder_pooling_mode", type=str, default='cls', 
+        help="{cls|mean}")
 parser.add_argument("--num_epochs_cross_encoder", type=int, default=1)
 parser.add_argument("--num_epochs_bi_encoder", type=int, default=10)
 parser.add_argument("--batch_size_cross_encoder", type=int, default=32)

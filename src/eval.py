@@ -95,12 +95,12 @@ def main():
     parser.add_argument("--model_name_or_path", type=str, 
             default="princeton-nlp/unsup-simcse-bert-base-uncased",
             help="Transformers' model name or path")
-    parser.add_argument("--task", type=str, default='sts')
-    parser.add_argument("--mode", type=str, default='bi', help="cross|bi")
+    parser.add_argument("--task", type=str, default="sts", 
+            help='{sts|sickr|sts_sickr|qqp|qnli|mrpc|snli|custom}')
+    parser.add_argument("--mode", type=str, default='bi', help="{cross|bi}")
     parser.add_argument("--device", type=int, default=0)
-    parser.add_argument("--bi_encoder_pooling_mode", type=str,
-            default='cls', help="cls|mean")
-
+    parser.add_argument("--bi_encoder_pooling_mode", type=str, default='cls', 
+            help="{cls|mean}")
     parser.add_argument("--ensemble", action="store_true")
     parser.add_argument("--model_name_or_path1", type=str, 
             default="princeton-nlp/unsup-simcse-bert-base-uncased")
@@ -186,7 +186,7 @@ def main():
 
             # eval bi-encoder
             logging.info ("Evaluate bi-encoder (ensembled)...")
-            eval_encoder(all_test, bi_encoder, task=args.task, enc_type="bi")
+            eval_encoder(all_test, [bi_encoder1, bi_encoder2], task=args.task, enc_type="bi", ensemble=True)
             
 
         elif args.mode == "cross":
@@ -200,7 +200,7 @@ def main():
             
             # eval cross-encoder
             logging.info ("Evaluate cross-encoder (ensembled)...")
-            eval_encoder(all_test, cross_encoder, task=args.task, enc_type="cross")
+            eval_encoder(all_test, [cross_encoder1, cross_encoder2], task=args.task, enc_type="cross", ensemble=True)
 
         else:
             raise NotImplementedError() 
