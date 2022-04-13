@@ -1,12 +1,11 @@
-# Trans-Encoder: Unsupervised sentence-pair modelling through self- and mutual-distillations
+# Trans-Encoder
 
 <img align="right" width="600"  src="https://production-media.paperswithcode.com/methods/e6c08315-2b70-4125-aeb2-147a6785d9b1.png">
 
-Code repo for paper **_[Trans-Encoder: Unsupervised sentence-pair modelling through self- and mutual-distillations](https://arxiv.org/pdf/2109.13059.pdf)_** <br>
+Code repo for ICLR 2022 paper **_[Trans-Encoder: Unsupervised sentence-pair modelling through self- and mutual-distillations](https://arxiv.org/abs/2109.13059)_** <br>
 by [Fangyu Liu](http://fangyuliu.me/about.html), [Yunlong Jiao](https://yunlongjiao.github.io/), [Jordan Massiah](https://www.linkedin.com/in/jordan-massiah-562862136/?originalSubdomain=uk), [Emine Yilmaz](https://sites.google.com/site/emineyilmaz/), [Serhii Havrylov](https://serhii-havrylov.github.io/).
 
 Trans-Encoder is a state-of-the-art unsupervised sentence similarity model. It conducts self-knowledge distillation on top of pretrained language models by alternating between their bi- and cross-encoder forms.
-
 
 
 ## Huggingface pretrained models for STS
@@ -81,6 +80,8 @@ Train with your custom corpus:
 `CORPUS_PATH` should point to your custom corpus in which every line should be a sentence pair in the form of `sent1||sent2`.
 
 ## Evaluate
+### Evaluate a single model
+
 Bi-encoder:
 ```bash
 >> python src/eval.py \
@@ -93,6 +94,27 @@ Cross-encoder:
 >> python src/eval.py \
 --model_name_or_path "cambridgeltl/trans-encoder-cross-simcse-roberta-large"  \
 --mode cross \
+--task sts_sickr
+```
+### Evaluate an ensembled model
+
+Bi-encoder:
+```bash
+>> python src/eval.py \
+--model_name_or_path1 "cambridgeltl/trans-encoder-bi-simcse-bert-large"  \
+--model_name_or_path2 "cambridgeltl/trans-encoder-bi-simcse-roberta-large"  \
+--mode bi \
+--ensemble \
+--task sts_sickr
+```
+
+Cross-encoder:
+```bash
+>> python src/eval.py \
+--model_name_or_path1 "cambridgeltl/trans-encoder-cross-simcse-bert-large"  \
+--model_name_or_path2 "cambridgeltl/trans-encoder-cross-simcse-roberta-large"  \
+--mode cross \
+--ensemble \
 --task sts_sickr
 ```
 
