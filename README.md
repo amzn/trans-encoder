@@ -1,6 +1,6 @@
 # Trans-Encoder
 
-<img align="right" width="600"  src="https://production-media.paperswithcode.com/methods/e6c08315-2b70-4125-aeb2-147a6785d9b1.png">
+<img align="right" width="500"  src="https://production-media.paperswithcode.com/methods/e6c08315-2b70-4125-aeb2-147a6785d9b1.png">
 
 Code repo for ICLR 2022 paper **_[Trans-Encoder: Unsupervised sentence-pair modelling through self- and mutual-distillations](https://arxiv.org/abs/2109.13059)_** <br>
 by [Fangyu Liu](http://fangyuliu.me/about.html), [Yunlong Jiao](https://yunlongjiao.github.io/), [Jordan Massiah](https://www.linkedin.com/in/jordan-massiah-562862136/?originalSubdomain=uk), [Emine Yilmaz](https://sites.google.com/site/emineyilmaz/), [Serhii Havrylov](https://serhii-havrylov.github.io/).
@@ -59,8 +59,10 @@ Self-distillation:
 
 Mutual-distillation (two GPUs needed):
 ```bash
->> bash train_mutual_distill.sh 1,2
+>> bash train_mutual_distill.sh 0,1
 ```
+
+Availible `--task` options: `sts` (STS2012-2016 and STS-b), `sickr`, `sts_sickr` (STS2012-2016, STS-b, and SICK-R), `qqp`, `qnli`, `mrpc`, `snli`, `custom`.
 
 Train with your custom corpus:
 ```bash
