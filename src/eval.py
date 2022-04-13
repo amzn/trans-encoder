@@ -186,7 +186,7 @@ def main():
 
             # eval bi-encoder
             logging.info ("Evaluate bi-encoder (ensembled)...")
-            eval_encoder(all_test, bi_encoder, task=args.task, enc_type="bi")
+            eval_encoder(all_test, [bi_encoder1, bi_encoder2], task=args.task, enc_type="bi", ensemble=True)
             
 
         elif args.mode == "cross":
@@ -200,7 +200,7 @@ def main():
             
             # eval cross-encoder
             logging.info ("Evaluate cross-encoder (ensembled)...")
-            eval_encoder(all_test, cross_encoder, task=args.task, enc_type="cross")
+            eval_encoder(all_test, [cross_encoder1, cross_encoder2], task=args.task, enc_type="cross", ensemble=True)
 
         else:
             raise NotImplementedError() 
