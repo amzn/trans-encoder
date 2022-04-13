@@ -51,18 +51,19 @@ All training and evaluation data will be automatically downloaded when running t
 
 ## Train
 
-Self-distillation:
+*Self-distillation*:
 ```bash
 >> bash train_self_distill.sh 0
 ```
 `0` denotes GPU device index.
 
-Mutual-distillation (two GPUs needed; by default using SimCSE-BERT and RoBERTa for ensembling):
+*Mutual-distillation* (two GPUs needed; by default using SimCSE BERT & RoBERTa for ensembling):
 ```bash
 >> bash train_mutual_distill.sh 0,1
 ```
 
 `--task` options: `sts` (STS2012-2016 and STS-b), `sickr`, `sts_sickr` (STS2012-2016, STS-b, and SICK-R), `qqp`, `qnli`, `mrpc`, `snli`, `custom`. See [src/data.py](https://github.com/amzn/trans-encoder/blob/main/src/data.py) for task data details.
+
 `--use_large` (`store_true`): availible in [src/train_mutual_distill.py](https://github.com/amzn/trans-encoder/blob/main/src/mutual_distill_parallel.py), switch to large models instead of base models.
 
 Train with your custom corpus:
