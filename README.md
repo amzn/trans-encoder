@@ -1,12 +1,26 @@
-# Trans-Encoder
+
+<br />
+<p align="center">
+  <h1 align="center">Trans-Encoder</h1>
+  <h3 align="center"> </h3>
+  
+  <p align="center">  
+    <a href="https://arxiv.org/abs/2109.13059">[arxiv]</a>
+    ·
+    <a href="https://www.amazon.science/blog/improving-unsupervised-sentence-pair-comparison">[amazon.science blog]</a>
+    ·
+    <a href="https://youtu.be/1Zg0rmVNfFI">[talk]</a>
+    ·
+    <a href="https://openreview.net/forum?id=AmUhwTOHgm">[openreview]</a> 
+  </p>
+</p>
 
 <img align="right" width="500"  src="https://production-media.paperswithcode.com/methods/e6c08315-2b70-4125-aeb2-147a6785d9b1.png">
 
 Code repo for **ICLR 2022** paper **_[Trans-Encoder: Unsupervised sentence-pair modelling through self- and mutual-distillations](https://arxiv.org/abs/2109.13059)_** <br>
 by [Fangyu Liu](http://fangyuliu.me/about.html), [Yunlong Jiao](https://yunlongjiao.github.io/), [Jordan Massiah](https://www.linkedin.com/in/jordan-massiah-562862136/?originalSubdomain=uk), [Emine Yilmaz](https://sites.google.com/site/emineyilmaz/), [Serhii Havrylov](https://serhii-havrylov.github.io/).
 
-Trans-Encoder is a state-of-the-art unsupervised sentence similarity model. It conducts self-knowledge distillation on top of pretrained language models by alternating between their bi- and cross-encoder forms.
-
+Trans-Encoder is a state-of-the-art unsupervised sentence similarity model. It conducts self-knowledge-distillation on top of pretrained language models by alternating between their bi- and cross-encoder forms.
 
 ## Huggingface pretrained models for STS
 
