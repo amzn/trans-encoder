@@ -9,7 +9,9 @@
     ·
     <a href="https://www.amazon.science/blog/improving-unsupervised-sentence-pair-comparison">[amazon.science blog]</a>
     ·
-    <a href="https://youtu.be/1Zg0rmVNfFI">[talk]</a>
+    <a href="https://iclr.cc/virtual/2022/poster/6242">[5min-video]</a>
+    ·
+    <a href="https://youtu.be/1Zg0rmVNfFI">[talk@RIKEN]</a>
     ·
     <a href="https://openreview.net/forum?id=AmUhwTOHgm">[openreview]</a> 
   </p>
